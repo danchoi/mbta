@@ -77,7 +77,6 @@ instance FromRecord StopTime
 
 -- "stop_id","stop_code","stop_name","stop_desc","platform_code","platform_name","stop_lat","stop_lon","stop_address","zone_id","stop_url","level_id","location_type","parent_station","wheelchair_boarding"
 
-
 data Stop = Stop {
     sStopId :: !Text
   , sStopCode :: !Text
