@@ -4,7 +4,7 @@ select
   max(r.route_long_name) long_name,
   max(t.direction_id) direction_id,
   count(r.route_id) trips,
-  array_to_string(array_agg(distinct t.trip_headsign), ';')
+  array_to_string(array_agg(distinct t.trip_headsign), ';') headsigns
   from routes r
   left outer join trips t on (t.route_id = r.route_id)
   where 
