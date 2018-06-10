@@ -1,0 +1,49 @@
+name:                mbta
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/githubuser/mbta-data#readme
+license:             BSD3
+license-file:        LICENSE
+author:              DHC
+maintainer:          danchoi+github@danielchoi.com
+copyright:           2018 Dan Choi
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+library 
+  hs-source-dirs:      .
+  exposed-modules:     Mbta.Csv, Mbta.Types
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , cassava
+                     , text
+                     , bytestring
+                     , vector
+  default-extensions: OverloadedStrings, ScopedTypeVariables
+
+executable mbta-data
+  hs-source-dirs:      .
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , mbta
+                     , text
+                     , bytestring
+                     , optparse-applicative
+  default-extensions: OverloadedStrings, ScopedTypeVariables
+
+test-suite tests
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Test.hs
+  build-depends:       base >= 4.7 && < 5
+                     , HUnit
+                     , mbta
+                     , cassava
+                     , text
+                     , bytestring
+                     , vector
+  default-extensions: OverloadedStrings, ScopedTypeVariables
