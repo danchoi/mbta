@@ -7,21 +7,31 @@ select
   from routes r
   left outer join trips t on (t.route_id = r.route_id)
   where 
-    r.route_id = '1'
-    and t.service_id = 'BUS22018-hbc28011-Weekday-02'
-    and t.direction_id = 1
+    t.service_id in (select active_services(adjusted_date(now())))
+    
   order by r.route_id, t.finished_at
 
 /*
 
- route_type | route_short_name | route_long_name | finished_at | trip_headsign 
-------------+------------------+-----------------+-------------+---------------
-          3 | 1                |                 | 05:33:00    | Dudley
-          3 | 1                |                 | 05:53:00    | Dudley
-          3 | 1                |                 | 06:13:00    | Dudley
-          3 | 1                |                 | 06:29:00    | Dudley
-          3 | 1                |                 | 06:50:00    | Dudley
-          3 | 1                |                 | 07:06:00    | Dudley
-          3 | 1                |                 | 07:18:00    | Dudley
-          3 | 1                |                 | 07:28:00    | Dudley
+
+ route_type | route_short_name |                route_long_name                | finished_at |                  trip_headsign                  
+------------+------------------+-----------------------------------------------+-------------+-------------------------------------------------
+          3 | 1                |                                               | 06:22:00    | Harvard
+          3 | 1                |                                               | 06:35:00    | Dudley
+          3 | 1                |                                               | 06:47:00    | Harvard
+          3 | 1                |                                               | 06:55:00    | Dudley
+          3 | 1                |                                               | 07:09:00    | Harvard
+          3 | 1                |                                               | 07:15:00    | Dudley
+          3 | 1                |                                               | 07:32:00    | Harvard
+          3 | 1                |                                               | 07:35:00    | Dudley
+          3 | 1                |                                               | 07:52:00    | Harvard
+          3 | 1                |                                               | 07:55:00    | Dudley
+          3 | 1                |                                               | 08:12:00    | Harvard
+          3 | 1                |                                               | 08:17:00    | Dudley
+          3 | 1                |                                               | 08:32:00    | Harvard
+          3 | 1                |                                               | 08:38:00    | Dudley
+          3 | 1                |                                               | 08:52:00    | Harvard
+          3 | 1                |                                               | 08:58:00    | Dudley
+          3 | 1                |                                               | 09:15:00    | Harvard
+          3 | 1                |                                               | 09:18:00    | Dudley
         */
